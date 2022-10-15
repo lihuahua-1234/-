@@ -6,7 +6,7 @@ import { $http } from '@escook/request-miniprogram'
 // 2.挂载到顶级对象中
 uni.$http = $http
 // 请求的根路径 请求头
-$http.baseUrl = 'https://www.uinav.com'
+$http.baseUrl = 'https://api-hmugo-web.itheima.net'
 // 3.请求拦截器
 $http.beforeRequest = function (options) {
   // 4.开启加载loading

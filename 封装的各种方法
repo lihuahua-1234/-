@@ -1,0 +1,7 @@
+// 封装弹框的方法
+uni.$showMsg() 
+
+/*uni-app 的api 
+ 获取系统信息同步接口, 参考官网api文档
+ uni.getStystemlnfoSync() 
+*/
