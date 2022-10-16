@@ -5,3 +5,43 @@ uni.$showMsg()
  获取系统信息同步接口, 参考官网api文档
  uni.getStystemlnfoSync() 
 */
+
+// 封装自定义导航栏组件
+// 封装click事件 $emit('click')
+
+// 吸顶效果
+.search-box {
+  // 设置定位效果为 吸顶
+  position: sticky;
+  // 吸顶的位置
+  top: 0;
+  // 提高层级
+  z-index: 999;
+}
+
+// 输入框防抖技术 原理 延时器
+
+// 超出文本用三小圆点
+.goods-name {
+  // 文字不允许换行（单行文本）
+  white-space: nowrap;
+  // 溢出部分隐藏
+  overflow: hidden;
+  // 文本溢出后，使用 ... 代替
+  text-overflow: ellipsis;
+  margin-right: 3px; 
+  }
+  
+ // 要求：不要有重复历史记录， 最新的排在最前面
+  const index = this.historyList.indexOf(this.kw)
+  if (index !== -1) {
+    this.historyList.splice(index, 1)
+  }
+  this.historyList.unshift(this.kw)
+  
+  
+  // 数据持久化 调用 uni.setStorageSync(key, value) 将搜索历史记录持久化存储到本地
+  // 存储
+  uni.setStorageSync('KW',JSON.stringify(this.historyList)) 
+  // 读取
+  this.historyList = JSON.parse(uni.getStorageSync('KW') || '[]')

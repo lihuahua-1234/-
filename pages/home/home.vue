@@ -1,5 +1,9 @@
 <template>
 	<view>
+    <!--使用自定义搜索框组件-->
+    <view class="search-box">
+    <my-search @click="gotoSearch"></my-search>
+    </view>
     <!--轮播图的区域-->
     <swiper :indicator-dots="true" :autoplay="true" :interval="2000" :circular="true">
       <!--是否显示面板指示点 是否自动切换 自动切换时间间隔 是否采用衔接滑动-->
@@ -114,6 +118,12 @@
             url: '/pages/cate/cate'
           })
         }
+      },
+      // 点击搜索跳转
+      gotoSearch() {
+        uni.navigateTo({
+          url: '/subpkg/search/search'
+        })
       }
 	  }
 	}
@@ -153,5 +163,13 @@ swiper {
 .floor-img-box {
   display: flex;
   padding: 0 10rpx;
+}
+.search-box {
+  // 设置定位效果为 吸顶
+  position: sticky;
+  // 吸顶的位置
+  top: 0;
+  // 提高层级
+  z-index: 999;
 }
 </style>

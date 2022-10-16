@@ -1,5 +1,8 @@
 <template>
 	<view>
+    <!--使用自定义搜索框组件-->
+    <!-- <my-search :bgcolor="'#C00000'" :radius="20"></my-search> -->
+    <my-search @click="gotoSearch"></my-search>
 		<view class="scroll-view-contaniner">
       <!--左侧滑动区域-->
       <scroll-view scroll-y="true" style="height: 300px;" class="left-scroll-view" :style="{height: wh + 'px'}">
@@ -46,7 +49,7 @@
     onLoad() {
       const sysInfo  = uni.getSystemInfoSync()
       // console.log(sysInfo)
-      this.wh = sysInfo.windowHeight
+      this.wh = sysInfo.windowHeight - 50   // windowHeight 可视区高度  50是导航栏的高度
       // 调用获取分类列表数据的方法
       this.getcateList()
     },
@@ -75,6 +78,13 @@
         uni.navigateTo({
       //url:'/subpkg/goods_list/goods_list?cid=' + item.cat_id,
           url:`/subpkg/goods_list/goods_list?cid=${item.cat_id}`
+        })
+      },
+      // 点击跳转导航栏
+      gotoSearch() {
+        // console.log('点击')
+        uni.navigateTo({
+          url: '/subpkg/search/search'
         })
       }
     }
@@ -124,7 +134,6 @@
     width: 33.33%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     margin-bottom: 10px;
     image {
