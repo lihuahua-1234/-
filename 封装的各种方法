@@ -8,6 +8,7 @@ uni.$showMsg()
 
 // 封装自定义导航栏组件
 // 封装click事件 $emit('click')
+// 封装商品item项组件
 
 // 吸顶效果
 .search-box {
@@ -45,3 +46,13 @@ uni.$showMsg()
   uni.setStorageSync('KW',JSON.stringify(this.historyList)) 
   // 读取
   this.historyList = JSON.parse(uni.getStorageSync('KW') || '[]')
+  
+  
+ // 过滤器节点
+ filters: {
+  // 把数字处理为带两位小数点的数字
+   tofixed(num) {
+    return Number(num).toFixed(2)
+   }
+ }
+ <view class="goods-price">￥{{goods.goods_price | tofixed}}</view>
