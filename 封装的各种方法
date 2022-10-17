@@ -56,3 +56,20 @@ uni.$showMsg()
    }
  }
  <view class="goods-price">￥{{goods.goods_price | tofixed}}</view>
+ 
+ 
+// 实现轮播图的预览效果
+preview(i) {
+  // 调用 uni.previewImage() 方法预览图片
+  uni.previewImage({
+    // 预览时，默认显示图片的索引
+    current: i,
+    // 所有图片 url 地址的数组
+    urls: this.goods_info.pics.map(x => x.pics_big)
+  })
+}
+<image class="image" :src="item.pics_big" @click="preview(i)"></image>
+
+
+rich-text 组件，将带有 HTML 标签的内容，渲染为小程序的页面结构
+<rich-text :nodes="goods_info.goods_introduce"></rich-text>
