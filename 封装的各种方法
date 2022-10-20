@@ -1,9 +1,25 @@
 // 封装弹框的方法
 uni.$showMsg() 
 
+见过的api
+ uni.setTabBarBadge() // 徽标
+ uni.getStystemlnfoSync() // 获取系统信息同步接口
+ uni.setStorageSync() // 数据持久化 存
+ uni.getStorageSync() // 数据持久化 取
+ uni.chooseAddress() // 收货地址的功能
+ 
 /*uni-app 的api 
  获取系统信息同步接口, 参考官网api文档
  uni.getStystemlnfoSync() 
+ 
+ 选择收货地址的功能
+ uni.chooseAddress()
+ // 调用uni.chooseAddress() 前先在 manifest.json 文件下 "mp-weixin" : {
+   "requiredPrivateInfos": [     
+     //"getFuzzyLocation",
+     //"choosePoi",
+     "chooseAddress"]
+     }
 */
 
 // 封装自定义导航栏组件
@@ -56,3 +72,38 @@ uni.$showMsg()
    }
  }
  <view class="goods-price">￥{{goods.goods_price | tofixed}}</view>
+ 
+ 调用 uni.setTabBarBadge() 方法，为购物车设置右上角的徽标
+ uni.setTabBarBadge({
+   index: 2, // 索引
+   text: this.total + '' // 注意：text 的值必须是字符串，不能是数字
+ })
+ 
+ mixins 混入
+ 
+ 
+ 面试题:
+ 将对象转换成字符串，再判断是否等于“{}”
+ let obj={};
+ console.log(JSON.stringify(obj)==="{}");
+ //返回true
+ 
+ 
+ vuex: 辅助函数
+ import { mapState, mapMutations, mapGetters } from 'vuex'
+ methods: {
+   ...mapMutations()
+ },
+ computed: {
+   ...mapState()
+   ...mapGetters()
+ }
+ 
+ // 调用同级下来方法
+ this.commit('m_user/saveAddressToStorage')
+ mutations: {
+ updateAddress() { this.commit('m_user/saveAddressToStorage') },
+ saveAddressToStorage() {}
+ }
+ 
+ 

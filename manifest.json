@@ -47,6 +47,11 @@
             "urlCheck" : true,
             "checkSiteMap": false
         },
-        "lazyCodeLoading": "requiredComponents"
+        "lazyCodeLoading": "requiredComponents",
+            "requiredPrivateInfos": [     
+                    //"getFuzzyLocation",
+                    //"choosePoi",
+                    "chooseAddress"
+                ]
     }
 }
